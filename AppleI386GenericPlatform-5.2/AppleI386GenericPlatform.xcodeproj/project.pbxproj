@@ -3,402 +3,321 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 38;
+	objectVersion = 42;
 	objects = {
-		06AA1264FFB2107B11CA28AA = {
+
+/* Begin PBXBuildFile section */
+		679746A517DFB4EF008B13C8 /* AppleI386CPU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 679746A117DFB4EF008B13C8 /* AppleI386CPU.cpp */; };
+		679746A617DFB4EF008B13C8 /* AppleI386CPU.h in Headers */ = {isa = PBXBuildFile; fileRef = 679746A217DFB4EF008B13C8 /* AppleI386CPU.h */; };
+		679746A717DFB4EF008B13C8 /* AppleI386PlatformExpert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 679746A317DFB4EF008B13C8 /* AppleI386PlatformExpert.cpp */; };
+		679746A817DFB4EF008B13C8 /* AppleI386PlatformExpert.h in Headers */ = {isa = PBXBuildFile; fileRef = 679746A417DFB4EF008B13C8 /* AppleI386PlatformExpert.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		679746A117DFB4EF008B13C8 /* AppleI386CPU.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppleI386CPU.cpp; sourceTree = "<group>"; };
+		679746A217DFB4EF008B13C8 /* AppleI386CPU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleI386CPU.h; sourceTree = "<group>"; };
+		679746A317DFB4EF008B13C8 /* AppleI386PlatformExpert.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppleI386PlatformExpert.cpp; sourceTree = "<group>"; };
+		679746A417DFB4EF008B13C8 /* AppleI386PlatformExpert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleI386PlatformExpert.h; sourceTree = "<group>"; };
+		A6B29F390D4980BB001D2E80 /* Info-AppleI386GenericPlatform.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-AppleI386GenericPlatform.plist"; sourceTree = "<group>"; };
+		A6B29F3A0D4980BB001D2E80 /* AppleI386GenericPlatform.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppleI386GenericPlatform.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A6B29F320D4980BB001D2E80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			generatedFileNames = (
-			);
-			isa = PBXShellScriptBuildPhase;
-			neededFileNames = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "script=\"${SYSTEM_DEVELOPER_DIR}/ProjectBuilder Extras/Kernel Extension Support/KEXTPostprocess\";\nif [ -x \"$script\" ]; then\n    . \"$script\"\nfi";
 		};
-		06AA1265FFB2107B11CA28AA = {
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* AppleI386GenericPlatform */ = {
+			isa = PBXGroup;
+			children = (
+				247142CAFF3F8F9811CA285C /* Source */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				19C28FB6FE9D52B211CA2CBB /* Products */,
+				A6B29F390D4980BB001D2E80 /* Info-AppleI386GenericPlatform.plist */,
+			);
+			name = AppleI386GenericPlatform;
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		19C28FB6FE9D52B211CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A6B29F3A0D4980BB001D2E80 /* AppleI386GenericPlatform.kext */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		247142CAFF3F8F9811CA285C /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				679746A117DFB4EF008B13C8 /* AppleI386CPU.cpp */,
+				679746A217DFB4EF008B13C8 /* AppleI386CPU.h */,
+				679746A317DFB4EF008B13C8 /* AppleI386PlatformExpert.cpp */,
+				679746A417DFB4EF008B13C8 /* AppleI386PlatformExpert.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A6B29F2B0D4980BB001D2E80 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				679746A617DFB4EF008B13C8 /* AppleI386CPU.h in Headers */,
+				679746A817DFB4EF008B13C8 /* AppleI386PlatformExpert.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A6B29F290D4980BB001D2E80 /* AppleI386GenericPlatform */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6B29F350D4980BB001D2E80 /* Build configuration list for PBXNativeTarget "AppleI386GenericPlatform" */;
+			buildPhases = (
+				A6B29F2A0D4980BB001D2E80 /* ShellScript */,
+				A6B29F2B0D4980BB001D2E80 /* Headers */,
+				A6B29F2F0D4980BB001D2E80 /* Resources */,
+				A6B29F300D4980BB001D2E80 /* Sources */,
+				A6B29F320D4980BB001D2E80 /* Frameworks */,
+				A6B29F330D4980BB001D2E80 /* Rez */,
+				A6B29F340D4980BB001D2E80 /* ShellScript */,
+			);
 			buildRules = (
 			);
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				OPTIMIZATION_CFLAGS = "-O0";
-			};
-			isa = PBXBuildStyle;
-			name = Development;
-		};
-		06AA1266FFB2107B11CA28AA = {
-			buildRules = (
+			dependencies = (
 			);
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-			};
-			isa = PBXBuildStyle;
-			name = Deployment;
+			name = AppleI386GenericPlatform;
+			productInstallPath = "$(SYSTEM_LIBRARY_DIR)/Extensions";
+			productName = AppleI386GenericPlatform;
+			productReference = A6B29F3A0D4980BB001D2E80 /* AppleI386GenericPlatform.kext */;
+			productType = "com.apple.product-type.kernel-extension.iokit";
 		};
-		06AA1267FFB2110C11CA28AA = {
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = A69550750A06D9A400FD6906 /* Build configuration list for PBXProject "AppleI386GenericPlatform" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			mainGroup = 089C166AFE841209C02AAC07 /* AppleI386GenericPlatform */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A6B29F290D4980BB001D2E80 /* AppleI386GenericPlatform */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A6B29F2F0D4980BB001D2E80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			generatedFileNames = (
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		A6B29F330D4980BB001D2E80 /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A6B29F2A0D4980BB001D2E80 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			neededFileNames = (
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "script=\"${SYSTEM_DEVELOPER_DIR}/ProjectBuilder Extras/Kernel Extension Support/KEXTPreprocess\";\nif [ -x \"$script\" ]; then\n    . \"$script\"\nfi";
 		};
-//060
-//061
-//062
-//063
-//064
-//080
-//081
-//082
-//083
-//084
-		089C1669FE841209C02AAC07 = {
-			buildStyles = (
-				06AA1265FFB2107B11CA28AA,
-				06AA1266FFB2107B11CA28AA,
+		A6B29F340D4980BB001D2E80 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
-			hasScannedForEncodings = 1;
-			isa = PBXProject;
-			mainGroup = 089C166AFE841209C02AAC07;
-			projectDirPath = "";
-			targets = (
-				089C1673FE841209C02AAC07,
-			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "script=\"${SYSTEM_DEVELOPER_DIR}/ProjectBuilder Extras/Kernel Extension Support/KEXTPostprocess\";\nif [ -x \"$script\" ]; then\n    . \"$script\"\nfi";
 		};
-		089C166AFE841209C02AAC07 = {
-			children = (
-				247142CAFF3F8F9811CA285C,
-				089C167CFE841241C02AAC07,
-				19C28FB6FE9D52B211CA2CBB,
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A6B29F300D4980BB001D2E80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				679746A517DFB4EF008B13C8 /* AppleI386CPU.cpp in Sources */,
+				679746A717DFB4EF008B13C8 /* AppleI386PlatformExpert.cpp in Sources */,
 			);
-			isa = PBXGroup;
-			name = AppleI386GenericPlatform;
-			refType = 4;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		089C1673FE841209C02AAC07 = {
-			buildPhases = (
-				06AA1267FFB2110C11CA28AA,
-				089C1674FE841209C02AAC07,
-				089C1675FE841209C02AAC07,
-				089C1676FE841209C02AAC07,
-				089C1677FE841209C02AAC07,
-				089C1679FE841209C02AAC07,
-				06AA1264FFB2107B11CA28AA,
-			);
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A69550760A06D9A400FD6906 /* Development */ = {
+			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				ONLY_ACTIVE_ARCH = NO;
+			};
+			name = Development;
+		};
+		A69550770A06D9A400FD6906 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+			};
+			name = Deployment;
+		};
+		A69550780A06D9A400FD6906 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Default;
+		};
+		A6B29F360D4980BB001D2E80 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-AppleI386GenericPlatform.plist";
 				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
 				KERNEL_MODULE = YES;
 				LIBRARY_SEARCH_PATHS = "";
 				MODULE_IOKIT = YES;
 				MODULE_NAME = com.apple.driver.AppleI386GenericPlatform;
-				MODULE_VERSION = 1.0.0;
+				MODULE_VERSION = 1.4;
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = AppleI386GenericPlatform;
 				SECTORDER_FLAGS = "";
-				VALID_ARCHS = i386;
-				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+				VALID_ARCHS = "i386 x86_64";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = kext;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		A6B29F370D4980BB001D2E80 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-AppleI386GenericPlatform.plist";
+				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
+				KERNEL_MODULE = YES;
+				LIBRARY_SEARCH_PATHS = "";
+				MODULE_IOKIT = YES;
+				MODULE_NAME = com.apple.driver.AppleI386GenericPlatform;
+				MODULE_VERSION = 1.4;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = AppleI386GenericPlatform;
+				SECTORDER_FLAGS = "";
+				VALID_ARCHS = "i386 x86_64";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = kext;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		A6B29F380D4980BB001D2E80 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-AppleI386GenericPlatform.plist";
+				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions";
+				KERNEL_MODULE = YES;
+				LIBRARY_SEARCH_PATHS = "";
+				MODULE_IOKIT = YES;
+				MODULE_NAME = com.apple.driver.AppleI386GenericPlatform;
+				MODULE_VERSION = 1.4;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = AppleI386GenericPlatform;
+				SECTORDER_FLAGS = "";
+				VALID_ARCHS = "i386 x86_64";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
 				WRAPPER_EXTENSION = kext;
 			};
-			dependencies = (
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A69550750A06D9A400FD6906 /* Build configuration list for PBXProject "AppleI386GenericPlatform" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A69550760A06D9A400FD6906 /* Development */,
+				A69550770A06D9A400FD6906 /* Deployment */,
+				A69550780A06D9A400FD6906 /* Default */,
 			);
-			isa = PBXBundleTarget;
-			name = AppleI386GenericPlatform;
-			productInstallPath = "$(SYSTEM_LIBRARY_DIR)/Extensions";
-			productName = AppleI386GenericPlatform;
-			productReference = 0B81C263FFB7832611CA28AA;
-			productSettingsXML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-<!DOCTYPE plist PUBLIC \"-//Apple Computer//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
-<plist version=\"1.0\">
-<dict>
-	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
-	<key>CFBundleExecutable</key>
-	<string>AppleI386GenericPlatform</string>
-	<key>CFBundleGetInfoString</key>
-	<string>1.0.1, Copyright Apple Computer, Inc. 2003</string>
-	<key>CFBundleIconFile</key>
-	<string></string>
-	<key>CFBundleIdentifier</key>
-	<string>com.apple.driver.AppleI386GenericPlatform</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundleName</key>
-	<string>Apple Generic I386 Platform Expert</string>
-	<key>CFBundlePackageType</key>
-	<string>KEXT</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0.1</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
-	<key>CFBundleVersion</key>
-	<string>1.0.1</string>
-	<key>IOKitPersonalities</key>
-	<dict>
-		<key>Generic CPU Driver</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.apple.driver.AppleI386GenericPlatform</string>
-			<key>IOClass</key>
-			<string>AppleI386CPU</string>
-			<key>IONameMatch</key>
-			<string>cpu</string>
-			<key>IOProbeScore</key>
-			<integer>1000</integer>
-			<key>IOProviderClass</key>
-			<string>IOPlatformDevice</string>
-		</dict>
-		<key>Generic Platform Expert</key>
-		<dict>
-			<key>CFBundleIdentifier</key>
-			<string>com.apple.driver.AppleI386GenericPlatform</string>
-			<key>IOClass</key>
-			<string>AppleI386PlatformExpert</string>
-			<key>IOProbeScore</key>
-			<integer>1000</integer>
-			<key>IOProviderClass</key>
-			<string>IOPlatformExpertDevice</string>
-			<key>InterruptControllerName</key>
-			<string>8259-pic</string>
-			<key>top-level</key>
-			<array>
-				<dict>
-					<key>IOName</key>
-					<string>cpu</string>
-				</dict>
-				<dict>
-					<key>IOName</key>
-					<string>8259-pic</string>
-					<key>InterruptControllerName</key>
-					<string>8259-pic</string>
-				</dict>
-				<dict>
-					<key>IOName</key>
-					<string>intel-clock</string>
-				</dict>
-				<dict>
-					<key>IOName</key>
-					<string>ps2controller</string>
-				</dict>
-				<dict>
-					<key>IOName</key>
-					<string>bios</string>
-				</dict>
-				<dict>
-					<key>IOName</key>
-					<string>pci</string>
-				</dict>
-			</array>
-		</dict>
-	</dict>
-	<key>OSBundleCompatibleVersion</key>
-	<string>1.0.1</string>
-	<key>OSBundleLibraries</key>
-	<dict>
-		<key>com.apple.kernel.iokit</key>
-		<string>1.1</string>
-		<key>com.apple.kernel.libkern</key>
-		<string>1.1</string>
-	</dict>
-	<key>OSBundleRequired</key>
-	<string>Root</string>
-</dict>
-</plist>
-";
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
 		};
-		089C1674FE841209C02AAC07 = {
-			buildActionMask = 2147483647;
-			files = (
-				B29AB6B9040FE3CD0FD5664C,
-				B29AB6BB040FE3CD0FD5664C,
+		A6B29F350D4980BB001D2E80 /* Build configuration list for PBXNativeTarget "AppleI386GenericPlatform" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6B29F360D4980BB001D2E80 /* Development */,
+				A6B29F370D4980BB001D2E80 /* Deployment */,
+				A6B29F380D4980BB001D2E80 /* Default */,
 			);
-			isa = PBXHeadersBuildPhase;
-			runOnlyForDeploymentPostprocessing = 0;
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
 		};
-		089C1675FE841209C02AAC07 = {
-			buildActionMask = 2147483647;
-			files = (
-				089C1680FE841241C02AAC07,
-			);
-			isa = PBXResourcesBuildPhase;
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		089C1676FE841209C02AAC07 = {
-			buildActionMask = 2147483647;
-			files = (
-				B29AB6B8040FE3CD0FD5664C,
-				B29AB6BA040FE3CD0FD5664C,
-			);
-			isa = PBXSourcesBuildPhase;
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		089C1677FE841209C02AAC07 = {
-			buildActionMask = 2147483647;
-			files = (
-			);
-			isa = PBXFrameworksBuildPhase;
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		089C1679FE841209C02AAC07 = {
-			buildActionMask = 2147483647;
-			files = (
-			);
-			isa = PBXRezBuildPhase;
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		089C167CFE841241C02AAC07 = {
-			children = (
-				089C167DFE841241C02AAC07,
-			);
-			isa = PBXGroup;
-			name = Resources;
-			refType = 4;
-		};
-		089C167DFE841241C02AAC07 = {
-			children = (
-				089C167EFE841241C02AAC07,
-			);
-			isa = PBXVariantGroup;
-			name = InfoPlist.strings;
-			refType = 4;
-		};
-		089C167EFE841241C02AAC07 = {
-			fileEncoding = 10;
-			isa = PBXFileReference;
-			name = English;
-			path = English.lproj/InfoPlist.strings;
-			refType = 4;
-		};
-		089C1680FE841241C02AAC07 = {
-			fileRef = 089C167DFE841241C02AAC07;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-//080
-//081
-//082
-//083
-//084
-//0B0
-//0B1
-//0B2
-//0B3
-//0B4
-		0B81C263FFB7832611CA28AA = {
-			isa = PBXBundleReference;
-			path = AppleI386GenericPlatform.kext;
-			refType = 3;
-		};
-//0B0
-//0B1
-//0B2
-//0B3
-//0B4
-//190
-//191
-//192
-//193
-//194
-		19C28FB6FE9D52B211CA2CBB = {
-			children = (
-				0B81C263FFB7832611CA28AA,
-			);
-			isa = PBXGroup;
-			name = Products;
-			refType = 4;
-		};
-//190
-//191
-//192
-//193
-//194
-//240
-//241
-//242
-//243
-//244
-		247142CAFF3F8F9811CA285C = {
-			children = (
-				B29AB6B4040FE3CD0FD5664C,
-				B29AB6B6040FE3CD0FD5664C,
-				B29AB6B5040FE3CD0FD5664C,
-				B29AB6B7040FE3CD0FD5664C,
-			);
-			isa = PBXGroup;
-			name = Source;
-			path = "";
-			refType = 4;
-		};
-//240
-//241
-//242
-//243
-//244
-//B20
-//B21
-//B22
-//B23
-//B24
-		B29AB6B4040FE3CD0FD5664C = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			path = AppleI386CPU.cpp;
-			refType = 4;
-		};
-		B29AB6B5040FE3CD0FD5664C = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			path = AppleI386CPU.h;
-			refType = 4;
-		};
-		B29AB6B6040FE3CD0FD5664C = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			path = AppleI386PlatformExpert.cpp;
-			refType = 4;
-		};
-		B29AB6B7040FE3CD0FD5664C = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			path = AppleI386PlatformExpert.h;
-			refType = 4;
-		};
-		B29AB6B8040FE3CD0FD5664C = {
-			fileRef = B29AB6B4040FE3CD0FD5664C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		B29AB6B9040FE3CD0FD5664C = {
-			fileRef = B29AB6B5040FE3CD0FD5664C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		B29AB6BA040FE3CD0FD5664C = {
-			fileRef = B29AB6B6040FE3CD0FD5664C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		B29AB6BB040FE3CD0FD5664C = {
-			fileRef = B29AB6B7040FE3CD0FD5664C;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
+/* End XCConfigurationList section */
 	};
-	rootObject = 089C1669FE841209C02AAC07;
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
 }

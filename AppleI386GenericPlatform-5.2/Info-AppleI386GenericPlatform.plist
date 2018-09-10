@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>AppleI386GenericPlatform</string>
+	<key>CFBundleGetInfoString</key>
+	<string>1.0.1, Copyright Apple Computer, Inc. 2003</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.apple.driver.AppleI386GenericPlatform</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Apple Generic I386 Platform Expert</string>
+	<key>CFBundlePackageType</key>
+	<string>KEXT</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.1</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0.1</string>
+	<key>IOKitPersonalities</key>
+	<dict>
+		<key>Generic CPU Driver</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.apple.driver.AppleI386GenericPlatform</string>
+			<key>IOClass</key>
+			<string>AppleI386CPU</string>
+			<key>IONameMatch</key>
+			<string>cpu</string>
+			<key>IOProbeScore</key>
+			<integer>1000</integer>
+			<key>IOProviderClass</key>
+			<string>IOPlatformDevice</string>
+		</dict>
+		<key>Generic Platform Expert</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.apple.driver.AppleI386GenericPlatform</string>
+			<key>IOClass</key>
+			<string>AppleI386PlatformExpert</string>
+			<key>IOProbeScore</key>
+			<integer>1000</integer>
+			<key>IOProviderClass</key>
+			<string>IOPlatformExpertDevice</string>
+			<key>InterruptControllerName</key>
+			<string>8259-pic</string>
+			<key>top-level</key>
+			<array>
+				<dict>
+					<key>IOName</key>
+					<string>cpu</string>
+				</dict>
+				<dict>
+					<key>IOName</key>
+					<string>8259-pic</string>
+					<key>InterruptControllerName</key>
+					<string>8259-pic</string>
+				</dict>
+				<dict>
+					<key>IOName</key>
+					<string>intel-clock</string>
+				</dict>
+				<dict>
+					<key>IOName</key>
+					<string>ps2controller</string>
+				</dict>
+				<dict>
+					<key>IOName</key>
+					<string>bios</string>
+				</dict>
+				<dict>
+					<key>IOName</key>
+					<string>pci</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2003-2008 Apple Inc. All rights reserved.</string>
+	<key>OSBundleCompatibleVersion</key>
+	<string>1.0.1</string>
+	<key>OSBundleLibraries</key>
+	<dict>
+		<key>com.apple.iokit.IOPCIFamily</key>
+		<string>1.1</string>
+		<key>com.apple.kpi.iokit</key>
+		<string>8.0.0d0</string>
+		<key>com.apple.kpi.libkern</key>
+		<string>8.0.0d0</string>
+		<key>com.apple.kpi.mach</key>
+		<string>8.0.0d0</string>
+		<key>com.apple.kpi.private</key>
+		<string>8.0.0d0</string>
+		<key>com.apple.kpi.unsupported</key>
+		<string>8.0.0d0</string>
+	</dict>
+	<key>OSBundleRequired</key>
+	<string>Root</string>
+</dict>
+</plist>

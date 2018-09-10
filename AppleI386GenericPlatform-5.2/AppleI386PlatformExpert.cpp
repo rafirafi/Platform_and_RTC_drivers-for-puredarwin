@@ -43,9 +43,7 @@ extern "C" {
 
 #include <IOKit/assert.h>
 
-__BEGIN_DECLS
-extern void kdreboot(void);
-__END_DECLS
+#include "ClockRTC.h" // necessary for getGMTTimeOfDay and setGMTTimeOfDay
 
 enum {
     kIRQAvailable   = 0,
@@ -88,9 +86,30 @@ AppleI386PlatformExpertGlobals::~AppleI386PlatformExpertGlobals()
 
 OSDefineMetaClassAndStructors(AppleI386PlatformExpert, IOPlatformExpert)
 
+// always prefer this kext if platform=PCx86 is passed as boot argument
 IOService * AppleI386PlatformExpert::probe(IOService * 	/* provider */,
                                            SInt32 *		score )
 {
+	enum { kMaxBootVar = 128 };
+    char *platformValue = (char*)IOMalloc (kMaxBootVar);
+
+	// darwin 9 
+	//if (PE_parse_boot_arg("platform", platformValue))
+	// darwin 10
+    if (PE_parse_boot_argn("platform", platformValue, kMaxBootVar))
+    {
+        if (strncmp(platformValue, "PCx86", kMaxBootVar) == 0 )
+        {
+            *score = 100000;
+        }
+    }
+    else
+    {
+        *score = 0;
+    }
+
+    IOFree(platformValue, kMaxBootVar );
+
     return (this);
 }
 
@@ -122,11 +141,19 @@ AppleI386PlatformExpert::start(IOService * provider)
 
 bool AppleI386PlatformExpert::configure( IOService * provider )
 {
-    OSArray *      topLevel;
+    OSArray *      topLevel = NULL;
+    OSArray *      copyArray = NULL;
     OSDictionary * dict;
     IOService *    nub;
 
-    topLevel = OSDynamicCast( OSArray, getProperty("top-level") );
+    // avoid "Trying to change a collection in the registry" error
+    copyArray = OSDynamicCast( OSArray, copyProperty( "top-level" ) );
+    if ( copyArray != NULL)
+    {
+        topLevel = ( OSArray * ) copyArray->copyCollection();
+        copyArray->release ( );
+        copyArray = NULL;
+    }
 
     if (topLevel )
     {
@@ -147,15 +174,27 @@ bool AppleI386PlatformExpert::configure( IOService * provider )
     return true;
 }
 
-
+// only set the pic
+// bios : drive not used
+// pci : hardcode value in AppleI386PlatformExpert instead
 IOService * AppleI386PlatformExpert::createNub(OSDictionary * from)
 {
     IOService *      nub;
-    OSData *		 prop;
-    KernelBootArgs_t * bootArgs;
+    /*OSData *       prop;
+    KernelBootArgs_t * bootArgs;*/
 
     nub = super::createNub(from);
 
+    if (nub) {
+        const char *name = nub->getName();
+
+        if (0 != strcmp("8259-pic", name))
+        {
+            setupPIC(nub);
+        }
+    }
+
+    /*
     if (nub)
     {
         const char *name = nub->getName();
@@ -178,6 +217,7 @@ IOService * AppleI386PlatformExpert::createNub(OSDictionary * from)
             setupPIC(nub);
         }
     }
+    */
 
     return (nub);
 }
@@ -225,9 +265,12 @@ AppleI386PlatformExpert::setupPIC(IOService *nub)
     controller->release();
 }
 
+// not called
 void
 AppleI386PlatformExpert::setupBIOS(IOService *nub)
 {
+    return;
+    /*
     KernelBootArgs_t *bootArgs = (KernelBootArgs_t *) PE_state.bootArgs;
     IOPlatformDevice *bios_dev;
     int i;
@@ -333,6 +376,7 @@ AppleI386PlatformExpert::setupBIOS(IOService *nub)
 
       nub->attachToChild(bios_dev, gIOServicePlane);
     }
+    */
 }
 
 bool
@@ -374,7 +418,7 @@ bool AppleI386PlatformExpert::getModelName( char * name, int maxLength )
     return (true);
 }
 
-
+// darwin8 : kdreboot defined in xnu at pexpert/i386/kd.c
 int AppleI386PlatformExpert::handlePEHaltRestart( unsigned int type )
 {
     int ret = 1;
@@ -384,8 +428,8 @@ int AppleI386PlatformExpert::handlePEHaltRestart( unsigned int type )
         case kPERestartCPU:
             // Use the pexpert service to reset the system through
             // the keyboard controller.
-            kdreboot();
-            break;
+            //kdreboot();
+            //break;
 
         case kPEHaltCPU:
         default:
@@ -456,7 +500,7 @@ IOReturn AppleI386PlatformExpert::callPlatformFunction(
     {
         IOService * nub         = (IOService *) param1;
         UInt32 *    vectors     = (UInt32 *)    param2;
-        UInt32      vectorCount = (UInt32)      param3;
+        UInt32      vectorCount = (UInt32)(uintptr_t)      param3;
         bool        exclusive   = (bool)        param4;
 
         if (vectorCount != 1) return kIOReturnBadArgument;
@@ -473,7 +517,7 @@ IOReturn AppleI386PlatformExpert::callPlatformFunction(
     }
     else if ( functionName->isEqualTo( "SetBusClockRateMHz" ) )
     {
-        UInt32     rateInMHz       = (UInt32)      param1;
+        UInt32     rateInMHz       = (UInt32)(uintptr_t)       param1;
 
         gPEClockFrequencyInfo.bus_clock_rate_hz = (rateInMHz * 1000000);
 
@@ -481,7 +525,7 @@ IOReturn AppleI386PlatformExpert::callPlatformFunction(
     }
     else if ( functionName->isEqualTo( "SetCPUClockRateMHz" ) )
     {
-        UInt32     rateInMHz       = (UInt32)      param1;
+        UInt32     rateInMHz       = (UInt32)(uintptr_t)       param1;
 
         gPEClockFrequencyInfo.cpu_clock_rate_hz = (rateInMHz * 1000000);
 
@@ -559,3 +603,46 @@ void AppleI386PlatformExpert::releaseSystemInterrupt( IOService * client,
     IOLockUnlock( ResourceLock );
 }
 
+
+long AppleI386PlatformExpert::getGMTTimeOfDay(void)
+{
+    IOService * rtcClock;
+
+    // 30s limit to get the rtc
+    mach_timespec_t  t;
+    t.tv_sec = 30;
+    t.tv_nsec = 0;
+
+    rtcClock = waitForService(serviceMatching("ClockRTC", NULL), &t ) ;
+
+    if (rtcClock)
+    {
+        return ((ClockRTC*)rtcClock)->getGMTTimeOfDay();
+    }
+    else {
+        IOLog("%s:%s : failed to get ClockRTC\n", getName(), __func__);
+    }
+
+    return 0;
+}
+
+void AppleI386PlatformExpert::setGMTTimeOfDay(long date)
+{
+    IOService * rtcClock;
+
+    // 30s limit to get the rtc
+    mach_timespec_t  t;
+    t.tv_sec = 30;
+    t.tv_nsec = 0;
+
+    rtcClock = waitForService(serviceMatching("ClockRTC", NULL), &t ) ;
+
+    if (rtcClock)
+    {
+        ((ClockRTC*)rtcClock)->setGMTTimeOfDay(date);
+    }
+    else
+    {
+        IOLog("%s:%s : failed to get ClockRTC\n", getName(), __func__);
+    }
+}

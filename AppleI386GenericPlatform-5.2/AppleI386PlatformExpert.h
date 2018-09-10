@@ -85,6 +85,11 @@ public:
     virtual bool getModelName(char * name, int maxLength);
     virtual bool getMachineName(char * name, int maxLength);
 
+    // RTC function
+
+	virtual long getGMTTimeOfDay(void);
+	virtual	void setGMTTimeOfDay(long date);
+
 };
 
 #endif /* ! _IOKIT_APPLEI386PLATFORM_H */
