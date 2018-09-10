@@ -33,119 +33,9 @@
 #include <IOKit/IODeviceTreeSupport.h>
 #include <IOKit/IOLib.h>
 
-//#include <architecture/i386/kernBootStruct.h>
-//#include <architecture/i386/pio.h>
+#include <architecture/i386/pio.h>
 
 #include "AppleI386PCI.h"
-
-//#include <assert.h>
-#warning Should be including these definitions from Kernel.framework as soon as they get exported #2579444
-#ifndef I386_PIO_H
-#define I386_PIO_H
-typedef unsigned short i386_ioport_t;
-
-/* read a longword */
-extern unsigned long    inl(
-                                i386_ioport_t   port);
-/* read a shortword */
-extern unsigned short   inw(
-                                i386_ioport_t   port);
-/* read a byte */
-extern unsigned char    inb(
-                                i386_ioport_t   port);
-/* write a longword */
-extern void             outl(
-                                i386_ioport_t   port,
-                                unsigned long   datum);
-/* write a word */
-extern void             outw(
-                                i386_ioport_t   port,
-                                unsigned short  datum);
-/* write a longword */
-extern void             outb(
-                                i386_ioport_t   port,
-                                unsigned char   datum);
-
-/* input an array of longwords */
-extern void             linl(
-                                i386_ioport_t   port,
-                                int             * data,
-                                int             count);
-/* output an array of longwords */
-extern void             loutl(
-                                i386_ioport_t   port,
-                                int             * data,
-                                int             count);
-
-/* input an array of words */
-extern void             linw(
-                                i386_ioport_t   port,
-                                int             * data,
-                                int             count);
-/* output an array of words */
-extern void             loutw(
-                                i386_ioport_t   port,
-                                int             * data,
-                                int             count);
-
-/* input an array of bytes */
-extern void             linb(
-                                i386_ioport_t   port,
-                                char            * data,
-                                int             count);
-/* output an array of bytes */
-extern void             loutb(
-                                i386_ioport_t   port,
-                                char            * data,
-                                int             count);
-
-#if defined(__GNUC__) && (!MACH_ASSERT)
-extern __inline__ unsigned long inl(
-                                i386_ioport_t port)
-{
-        unsigned long datum;
-        __asm__ volatile("inl %1, %0" : "=a" (datum) : "d" (port));
-        return(datum);
-}
-
-extern __inline__ unsigned short inw(
-                                i386_ioport_t port)
-{
-        unsigned short datum;
-        __asm__ volatile(".byte 0x66; inl %1, %0" : "=a" (datum) : "d" (port));
-        return(datum);
-}
-
-extern __inline__ unsigned char inb(
-                                i386_ioport_t port)
-{
-        unsigned char datum;
-        __asm__ volatile("inb %1, %0" : "=a" (datum) : "d" (port));
-        return(datum);
-}
-
-extern __inline__ void outl(
-                                i386_ioport_t port,
-                                unsigned long datum)
-{
-        __asm__ volatile("outl %0, %1" : : "a" (datum), "d" (port));
-}
-
-extern __inline__ void outw(
-                                i386_ioport_t port,
-                                unsigned short datum)
-{
-        __asm__ volatile(".byte 0x66; outl %0, %1" : : "a" (datum), "d" (port));
-}
-
-extern __inline__ void outb(
-                                i386_ioport_t port,
-                                unsigned char datum)
-{
-        __asm__ volatile("outb %0, %1" : : "a" (datum), "d" (port));
-}
-#endif /* defined(__GNUC__) && (!MACH_ASSERT) */
-#endif /* I386_PIO_H */
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -157,29 +47,21 @@ OSDefineMetaClassAndStructors(AppleI386PCI, IOPCIBridge)
 
 bool AppleI386PCI::start( IOService * provider )
 {
-    OSData *		prop;
-    PCI_bus_info_t *	info;
-
     if( 0 == (lock = IOSimpleLockAlloc()))
 	return( false );
 
-    prop = (OSData *) provider->getProperty("pci-bus-info");
-    if( 0 == prop)
-	return( false);
-
-    info = (PCI_bus_info_t *) prop->getBytesNoCopy();
-
-    maxBusNum = info->maxBusNum;
+    /* use hardcoded values as the bootloader don't pass this anymore */
+    maxBusNum = 0;
     maxDevNum = 0;
-    majorVersion = info->majorVersion;
-    minorVersion = info->minorVersion;
-    BIOS16Present = info->BIOSPresent;
+    majorVersion = 0x02;
+    minorVersion = 0x10;
+    BIOS16Present = 1;
     BIOS32Present = false;
     BIOS32Entry   = 0x00000000;
-    configMethod1 = info->u_bus.s.configMethod1;
-    configMethod2 = info->u_bus.s.configMethod2;
-    specialCycle1 = info->u_bus.s.specialCycle1;
-    specialCycle2 = info->u_bus.s.specialCycle2;
+    configMethod1 = 1;
+    configMethod2 = 0;
+    specialCycle1 = 0;
+    specialCycle2 = 0;
 
         /*
          if ((BIOS16Present) & !(configMethod1 | configMethod2)) {
