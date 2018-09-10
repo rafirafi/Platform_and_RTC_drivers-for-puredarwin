@@ -39,7 +39,8 @@
 
 /* IOKit ATA includes */
 #include <IOKit/storage/IOStorage.h>
-#include <IOKit/storage/ata/IOATAStorageDefines.h>
+//#include <IOKit/storage/ata/IOATAStorageDefines.h>
+#include "IOATAStorageDefines.h"
 #include <IOKit/ata/IOATADevice.h>
 #include <IOKit/ata/IOATATypes.h>
 
@@ -382,7 +383,7 @@ public:
 	// The initialPowerStateForDomainState() method is called by the power manager
 	// to ask us what state we should be in based on the power flags of our parent
 	// in the power tree.
-	virtual UInt32		initialPowerStateForDomainState ( IOPMPowerFlags flags );
+	virtual unsigned long		initialPowerStateForDomainState ( IOPMPowerFlags flags );
 	
 	virtual IOReturn 	setPowerState ( UInt32			powerStateOrdinal,
 										IOService * 	whatDevice );
@@ -394,15 +395,23 @@ public:
 	
 	//-----------------------------------------------------------------------
 	// Handles read/write requests.
-	
+#ifndef __LP64__
 	virtual IOReturn doAsyncReadWrite ( IOMemoryDescriptor * 	buffer,
 										UInt32					block,
 										UInt32					nblks,
 										IOStorageCompletion		completion );
+#else	
+	virtual IOReturn doAsyncReadWrite ( IOMemoryDescriptor * 	buffer,
+									   UInt64					block,
+									   UInt64					nblks,
+									   IOStorageAttributes *    attributes,
+									   IOStorageCompletion *	completion );
+#endif
 	
 	virtual IOReturn doSyncReadWrite ( 	IOMemoryDescriptor *	buffer,
 										UInt32					block,
 										UInt32					nblks );
+
 	
 	//-----------------------------------------------------------------------
 	// Eject the media in the drive.

@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6722D6151629122F00C88F6F /* IOATABlockStorageDriver.h in Headers */ = {isa = PBXBuildFile; fileRef = 01140C20FFC5C1ED11CE15BF /* IOATABlockStorageDriver.h */; settings = {ATTRIBUTES = (); }; };
+		6722D6161629122F00C88F6F /* IOATABlockStorageDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 01140C21FFC5C1ED11CE15BF /* IOATABlockStorageDevice.h */; settings = {ATTRIBUTES = (); }; };
+		6722D6171629122F00C88F6F /* IOATAStorageDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 01140C22FFC5C1ED11CE15BF /* IOATAStorageDefines.h */; settings = {ATTRIBUTES = (); }; };
+		6722D6181629122F00C88F6F /* ATASMARTUserClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C3EEA02022AF8BB05CE15BF /* ATASMARTUserClient.h */; };
+		6722D6191629122F00C88F6F /* ATASMARTLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C3EE9EF022AF49305CE15BF /* ATASMARTLib.h */; };
+		6722D61A1629122F00C88F6F /* ATASMARTLibPriv.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C3EE9F0022AF49305CE15BF /* ATASMARTLibPriv.h */; };
+		6722D61C1629122F00C88F6F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
+		6722D61D1629122F00C88F6F /* PCCard.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5CD9EF2102BEB0B205CE15BF /* PCCard.icns */; };
+		6722D61F1629122F00C88F6F /* IOATABlockStorageCommands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01140C23FFC5C1ED11CE15BF /* IOATABlockStorageCommands.cpp */; settings = {ATTRIBUTES = (); }; };
+		6722D6201629122F00C88F6F /* IOATABlockStorageDriver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01140C24FFC5C1ED11CE15BF /* IOATABlockStorageDriver.cpp */; settings = {ATTRIBUTES = (); }; };
+		6722D6211629122F00C88F6F /* IOATABlockStorageDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01140C25FFC5C1ED11CE15BF /* IOATABlockStorageDevice.cpp */; settings = {ATTRIBUTES = (); }; };
+		6722D6221629122F00C88F6F /* IOATABlockStorageDriverPM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01140C26FFC5C1ED11CE15BF /* IOATABlockStorageDriverPM.cpp */; settings = {ATTRIBUTES = (); }; };
+		6722D6231629122F00C88F6F /* ATASMARTUserClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5C3EEA03022AF8BB05CE15BF /* ATASMARTUserClient.cpp */; };
+		6722D6311629122F00C88F6F /* ATASMARTLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C3EE9EF022AF49305CE15BF /* ATASMARTLib.h */; };
+		6722D6321629122F00C88F6F /* ATASMARTLibPriv.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C3EE9F0022AF49305CE15BF /* ATASMARTLibPriv.h */; };
+		6722D6331629122F00C88F6F /* ATASMARTClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C3EE9F1022AF49305CE15BF /* ATASMARTClient.h */; };
+		6722D6341629122F00C88F6F /* IOATAStorageDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 01140C22FFC5C1ED11CE15BF /* IOATAStorageDefines.h */; };
+		6722D6371629122F00C88F6F /* ATASMARTClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5C3EE9F2022AF49305CE15BF /* ATASMARTClient.cpp */; };
+		6722D6391629122F00C88F6F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3EE9FE022AF7EC05CE15BF /* CoreFoundation.framework */; };
+		6722D63A1629122F00C88F6F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3EE9FF022AF7EC05CE15BF /* IOKit.framework */; };
+		6722D6581629122F00C88F6F /* ATASMARTLib.plugin in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6722D6411629122F00C88F6F /* ATASMARTLib.plugin */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6722D6C31629175700C88F6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6722D62F1629122F00C88F6F;
+			remoteInfo = ATASMARTLib;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6722D6251629122F00C88F6F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6722D6581629122F00C88F6F /* ATASMARTLib.plugin in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		01140C20FFC5C1ED11CE15BF /* IOATABlockStorageDriver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOATABlockStorageDriver.h; sourceTree = SOURCE_ROOT; };
+		01140C21FFC5C1ED11CE15BF /* IOATABlockStorageDevice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOATABlockStorageDevice.h; sourceTree = SOURCE_ROOT; };
+		01140C22FFC5C1ED11CE15BF /* IOATAStorageDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOATAStorageDefines.h; sourceTree = SOURCE_ROOT; };
+		01140C23FFC5C1ED11CE15BF /* IOATABlockStorageCommands.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IOATABlockStorageCommands.cpp; sourceTree = SOURCE_ROOT; };
+		01140C24FFC5C1ED11CE15BF /* IOATABlockStorageDriver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IOATABlockStorageDriver.cpp; sourceTree = SOURCE_ROOT; };
+		01140C25FFC5C1ED11CE15BF /* IOATABlockStorageDevice.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IOATABlockStorageDevice.cpp; sourceTree = SOURCE_ROOT; };
+		01140C26FFC5C1ED11CE15BF /* IOATABlockStorageDriverPM.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IOATABlockStorageDriverPM.cpp; sourceTree = SOURCE_ROOT; };
+		0145CCF6FFE5FEDF11CE15BF /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
+		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5C3EE9EF022AF49305CE15BF /* ATASMARTLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ATASMARTLib.h; path = UserClientLib/ATASMARTLib.h; sourceTree = "<group>"; };
+		5C3EE9F0022AF49305CE15BF /* ATASMARTLibPriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ATASMARTLibPriv.h; path = UserClientLib/ATASMARTLibPriv.h; sourceTree = "<group>"; };
+		5C3EE9F1022AF49305CE15BF /* ATASMARTClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ATASMARTClient.h; path = UserClientLib/ATASMARTClient.h; sourceTree = "<group>"; };
+		5C3EE9F2022AF49305CE15BF /* ATASMARTClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ATASMARTClient.cpp; path = UserClientLib/ATASMARTClient.cpp; sourceTree = "<group>"; };
+		5C3EE9FE022AF7EC05CE15BF /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		5C3EE9FF022AF7EC05CE15BF /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		5C3EEA02022AF8BB05CE15BF /* ATASMARTUserClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ATASMARTUserClient.h; path = UserClient/ATASMARTUserClient.h; sourceTree = "<group>"; };
+		5C3EEA03022AF8BB05CE15BF /* ATASMARTUserClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ATASMARTUserClient.cpp; path = UserClient/ATASMARTUserClient.cpp; sourceTree = "<group>"; };
+		5CD9EF2102BEB0B205CE15BF /* PCCard.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = PCCard.icns; path = Icons/PCCard.icns; sourceTree = "<group>"; };
+		6722D62D1629122F00C88F6F /* Info-IOATABlockStorage.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-IOATABlockStorage.plist"; sourceTree = "<group>"; };
+		6722D62E1629122F00C88F6F /* IOATABlockStorage.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOATABlockStorage.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		6722D6401629122F00C88F6F /* Info-ATASMARTLib.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-ATASMARTLib.plist"; sourceTree = "<group>"; };
+		6722D6411629122F00C88F6F /* ATASMARTLib.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ATASMARTLib.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6722D6241629122F00C88F6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6722D6381629122F00C88F6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6722D6391629122F00C88F6F /* CoreFoundation.framework in Frameworks */,
+				6722D63A1629122F00C88F6F /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* IOATABlockStorage */ = {
+			isa = PBXGroup;
+			children = (
+				247142CAFF3F8F9811CA285C /* Kernel */,
+				5C3EE9EE022AF3F005CE15BF /* User */,
+				5C3EE9FE022AF7EC05CE15BF /* CoreFoundation.framework */,
+				5C3EE9FF022AF7EC05CE15BF /* IOKit.framework */,
+				0145CCF6FFE5FEDF11CE15BF /* Kernel.framework */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				19C28FB6FE9D52B211CA2CBB /* Products */,
+				6722D62D1629122F00C88F6F /* Info-IOATABlockStorage.plist */,
+				6722D6401629122F00C88F6F /* Info-ATASMARTLib.plist */,
+			);
+			name = IOATABlockStorage;
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5CD9EF2102BEB0B205CE15BF /* PCCard.icns */,
+				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		19C28FB6FE9D52B211CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6722D62E1629122F00C88F6F /* IOATABlockStorage.kext */,
+				6722D6411629122F00C88F6F /* ATASMARTLib.plugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		247142CAFF3F8F9811CA285C /* Kernel */ = {
+			isa = PBXGroup;
+			children = (
+				01140C20FFC5C1ED11CE15BF /* IOATABlockStorageDriver.h */,
+				01140C21FFC5C1ED11CE15BF /* IOATABlockStorageDevice.h */,
+				5C3EEA02022AF8BB05CE15BF /* ATASMARTUserClient.h */,
+				01140C22FFC5C1ED11CE15BF /* IOATAStorageDefines.h */,
+				01140C24FFC5C1ED11CE15BF /* IOATABlockStorageDriver.cpp */,
+				01140C23FFC5C1ED11CE15BF /* IOATABlockStorageCommands.cpp */,
+				01140C26FFC5C1ED11CE15BF /* IOATABlockStorageDriverPM.cpp */,
+				01140C25FFC5C1ED11CE15BF /* IOATABlockStorageDevice.cpp */,
+				5C3EEA03022AF8BB05CE15BF /* ATASMARTUserClient.cpp */,
+			);
+			name = Kernel;
+			sourceTree = "<group>";
+		};
+		5C3EE9EE022AF3F005CE15BF /* User */ = {
+			isa = PBXGroup;
+			children = (
+				5C3EE9EF022AF49305CE15BF /* ATASMARTLib.h */,
+				5C3EE9F0022AF49305CE15BF /* ATASMARTLibPriv.h */,
+				5C3EE9F1022AF49305CE15BF /* ATASMARTClient.h */,
+				5C3EE9F2022AF49305CE15BF /* ATASMARTClient.cpp */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6722D6141629122F00C88F6F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6722D6151629122F00C88F6F /* IOATABlockStorageDriver.h in Headers */,
+				6722D6161629122F00C88F6F /* IOATABlockStorageDevice.h in Headers */,
+				6722D6171629122F00C88F6F /* IOATAStorageDefines.h in Headers */,
+				6722D6181629122F00C88F6F /* ATASMARTUserClient.h in Headers */,
+				6722D6191629122F00C88F6F /* ATASMARTLib.h in Headers */,
+				6722D61A1629122F00C88F6F /* ATASMARTLibPriv.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6722D6301629122F00C88F6F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6722D6311629122F00C88F6F /* ATASMARTLib.h in Headers */,
+				6722D6321629122F00C88F6F /* ATASMARTLibPriv.h in Headers */,
+				6722D6331629122F00C88F6F /* ATASMARTClient.h in Headers */,
+				6722D6341629122F00C88F6F /* IOATAStorageDefines.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		6722D60E1629122F00C88F6F /* IOATABlockStorage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6722D6291629122F00C88F6F /* Build configuration list for PBXNativeTarget "IOATABlockStorage" */;
+			buildPhases = (
+				6722D6131629122F00C88F6F /* ShellScript */,
+				6722D6141629122F00C88F6F /* Headers */,
+				6722D61B1629122F00C88F6F /* Resources */,
+				6722D61E1629122F00C88F6F /* Sources */,
+				6722D6241629122F00C88F6F /* Frameworks */,
+				6722D6251629122F00C88F6F /* CopyFiles */,
+				6722D6271629122F00C88F6F /* Rez */,
+				6722D6281629122F00C88F6F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6722D6C41629175700C88F6F /* PBXTargetDependency */,
+			);
+			name = IOATABlockStorage;
+			productInstallPath = "$(SYSTEM_LIBRARY_DIR)/Extensions/IOATAFamily.kext/Contents/PlugIns";
+			productName = IOATABlockStorage;
+			productReference = 6722D62E1629122F00C88F6F /* IOATABlockStorage.kext */;
+			productType = "com.apple.product-type.kernel-extension.iokit";
+		};
+		6722D62F1629122F00C88F6F /* ATASMARTLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6722D63C1629122F00C88F6F /* Build configuration list for PBXNativeTarget "ATASMARTLib" */;
+			buildPhases = (
+				6722D6301629122F00C88F6F /* Headers */,
+				6722D6351629122F00C88F6F /* Resources */,
+				6722D6361629122F00C88F6F /* Sources */,
+				6722D6381629122F00C88F6F /* Frameworks */,
+				6722D63B1629122F00C88F6F /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ATASMARTLib;
+			productInstallPath = "$(USER_LIBRARY_DIR)/Bundles";
+			productName = ATASmartLib;
+			productReference = 6722D6411629122F00C88F6F /* ATASMARTLib.plugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 6722D6061629122700C88F6F /* Build configuration list for PBXProject "IOATABlockStorage" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 1;
+			mainGroup = 089C166AFE841209C02AAC07 /* IOATABlockStorage */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6722D60E1629122F00C88F6F /* IOATABlockStorage */,
+				6722D62F1629122F00C88F6F /* ATASMARTLib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6722D61B1629122F00C88F6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6722D61C1629122F00C88F6F /* InfoPlist.strings in Resources */,
+				6722D61D1629122F00C88F6F /* PCCard.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6722D6351629122F00C88F6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		6722D6271629122F00C88F6F /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6722D63B1629122F00C88F6F /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6722D6131629122F00C88F6F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "script=\"${SYSTEM_DEVELOPER_DIR}/ProjectBuilder Extras/Kernel Extension Support/KEXTPreprocess\";\nif [ -x \"$script\" ]; then\n    . \"$script\"\nfi";
+		};
+		6722D6281629122F00C88F6F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "script=\"${SYSTEM_DEVELOPER_DIR}/ProjectBuilder Extras/Kernel Extension Support/KEXTPostprocess\";\nif [ -x \"$script\" ]; then\n    . \"$script\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6722D61E1629122F00C88F6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6722D61F1629122F00C88F6F /* IOATABlockStorageCommands.cpp in Sources */,
+				6722D6201629122F00C88F6F /* IOATABlockStorageDriver.cpp in Sources */,
+				6722D6211629122F00C88F6F /* IOATABlockStorageDevice.cpp in Sources */,
+				6722D6221629122F00C88F6F /* IOATABlockStorageDriverPM.cpp in Sources */,
+				6722D6231629122F00C88F6F /* ATASMARTUserClient.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6722D6361629122F00C88F6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6722D6371629122F00C88F6F /* ATASMARTClient.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6722D6C41629175700C88F6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6722D62F1629122F00C88F6F /* ATASMARTLib */;
+			targetProxy = 6722D6C31629175700C88F6F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		089C167DFE841241C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C167EFE841241C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6722D5FA1629122700C88F6F /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				ONLY_ACTIVE_ARCH = NO;
+			};
+			name = Development;
+		};
+		6722D5FB1629122700C88F6F /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				ONLY_ACTIVE_ARCH = NO;
+			};
+			name = Deployment;
+		};
+		6722D5FC1629122700C88F6F /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				ONLY_ACTIVE_ARCH = NO;
+			};
+			name = Default;
+		};
+		6722D62A1629122F00C88F6F /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ATA_BLOCK_STORAGE_DEVICE_DEBUGGING_LEVEL = 0;
+				ATA_BLOCK_STORAGE_DRIVER_DEBUGGING_LEVEL = 0;
+				ATA_BLOCK_STORAGE_DRIVER_PM_DEBUGGING_LEVEL = 0;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-IOATABlockStorage.plist";
+				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions/IOATAFamily.kext/Contents/PlugIns";
+				KERNEL_MODULE = YES;
+				LIBRARY_SEARCH_PATHS = "";
+				MODULE_IOKIT = YES;
+				MODULE_NAME = com.apple.iokit.IOATABlockStorage;
+				MODULE_VERSION = 1.3.0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = IOATABlockStorage;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = kext;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		6722D62B1629122F00C88F6F /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-IOATABlockStorage.plist";
+				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions/IOATAFamily.kext/Contents/PlugIns";
+				KERNEL_MODULE = YES;
+				LIBRARY_SEARCH_PATHS = "";
+				MODULE_IOKIT = YES;
+				MODULE_NAME = com.apple.iokit.IOATABlockStorage;
+				MODULE_VERSION = 1.3.0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = IOATABlockStorage;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = kext;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		6722D62C1629122F00C88F6F /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "Info-IOATABlockStorage.plist";
+				INSTALL_PATH = "$(SYSTEM_LIBRARY_DIR)/Extensions/IOATAFamily.kext/Contents/PlugIns";
+				KERNEL_MODULE = YES;
+				LIBRARY_SEARCH_PATHS = "";
+				MODULE_IOKIT = YES;
+				MODULE_NAME = com.apple.iokit.IOATABlockStorage;
+				MODULE_VERSION = 1.3.0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = IOATABlockStorage;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Default;
+		};
+		6722D63D1629122F00C88F6F /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ATA_BLOCK_STORAGE_DEVICE_DEBUGGING_LEVEL = 0;
+				ATA_BLOCK_STORAGE_DRIVER_DEBUGGING_LEVEL = 0;
+				ATA_BLOCK_STORAGE_DRIVER_PM_DEBUGGING_LEVEL = 0;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "Info-ATASMARTLib.plist";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ATASMARTLib;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = plugin;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		6722D63E1629122F00C88F6F /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "Info-ATASMARTLib.plist";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ATASMARTLib;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = plugin;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		6722D63F1629122F00C88F6F /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "Info-ATASMARTLib.plist";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ATASMARTLib;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				WRAPPER_EXTENSION = plugin;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6722D6061629122700C88F6F /* Build configuration list for PBXProject "IOATABlockStorage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6722D5FA1629122700C88F6F /* Development */,
+				6722D5FB1629122700C88F6F /* Deployment */,
+				6722D5FC1629122700C88F6F /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		6722D6291629122F00C88F6F /* Build configuration list for PBXNativeTarget "IOATABlockStorage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6722D62A1629122F00C88F6F /* Development */,
+				6722D62B1629122F00C88F6F /* Deployment */,
+				6722D62C1629122F00C88F6F /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		6722D63C1629122F00C88F6F /* Build configuration list for PBXNativeTarget "ATASMARTLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6722D63D1629122F00C88F6F /* Development */,
+				6722D63E1629122F00C88F6F /* Deployment */,
+				6722D63F1629122F00C88F6F /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}

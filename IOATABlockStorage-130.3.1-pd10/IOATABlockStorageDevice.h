@@ -67,12 +67,19 @@ public:
 	
     virtual IOReturn	setProperties ( OSObject * properties );
 	
-	
+#ifndef __LP64__
 	virtual IOReturn	doAsyncReadWrite ( 	IOMemoryDescriptor *	buffer,
 											UInt32					block,
 											UInt32					nblks,
 											IOStorageCompletion		completion );
 	
+#else
+	virtual IOReturn	doAsyncReadWrite ( 	IOMemoryDescriptor *	buffer,
+										  UInt64					block,
+										  UInt64					nblks,
+										  IOStorageAttributes *		attributes,
+										  IOStorageCompletion *		completion );
+#endif
 	virtual IOReturn	doSyncReadWrite ( 	IOMemoryDescriptor *	buffer,
 											UInt32					block,
 											UInt32					nblks );

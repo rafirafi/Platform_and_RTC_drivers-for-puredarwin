@@ -496,6 +496,7 @@ IOATABlockStorageDriver::createNub ( IOService * provider )
 // ¥ doAsyncReadWrite - Handles asynchronous read/write requests.
 //---------------------------------------------------------------------------
 
+#ifndef __LP64__
 IOReturn
 IOATABlockStorageDriver::doAsyncReadWrite (
 										IOMemoryDescriptor *	buffer,
@@ -524,7 +525,37 @@ IOATABlockStorageDriver::doAsyncReadWrite (
 	return ret;
 	
 }
-
+#else
+IOReturn
+IOATABlockStorageDriver::doAsyncReadWrite (
+										   IOMemoryDescriptor *	    buffer,
+										   UInt64					block,
+										   UInt64					nblks,
+										   IOStorageAttributes *	attributes,		
+										   IOStorageCompletion *	completion )
+{
+	
+	IOReturn			ret;
+	IOATACommand *		cmd		= NULL;
+	
+	STATUS_LOG ( ( "IOATABlockStorageDriver::doAsyncReadWrite entering.\n" ) );
+	
+	cmd = ataCommandReadWrite ( buffer, block, nblks );
+	if ( cmd == NULL )
+	{
+		
+		return kIOReturnNoMemory;
+		
+	}
+	
+	ret = asyncExecute ( cmd, *completion );
+	
+	STATUS_LOG ( ( "IOATABlockStorageDriver::doAsyncReadWrite exiting ret = %ld.\n", ( UInt32 ) ret ) );
+	
+	return ret;
+	
+}
+#endif
 
 
 //---------------------------------------------------------------------------
@@ -773,7 +804,7 @@ IOATABlockStorageDriver::getAdditionalDeviceInfoString ( void )
 {
 
 	STATUS_LOG ( ( "IOATABlockStorageDriver::getAdditionalDeviceInfoString called.\n" ) );
-	return ( "[ATA]" );
+	return ( (char *)"[ATA]" );
 	
 }
 

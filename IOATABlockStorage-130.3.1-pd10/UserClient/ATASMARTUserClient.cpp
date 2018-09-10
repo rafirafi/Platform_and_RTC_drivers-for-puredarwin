@@ -835,7 +835,7 @@ ATASMARTUserClient::ReadData ( vm_address_t data )
 		
 	}
 	
-	buffer = IOMemoryDescriptor::withAddress ( 	data,
+	buffer = IOMemoryDescriptor::withAddressRange ( 	data,
 												sizeof ( ATASMARTData ),
 												kIODirectionIn,
 												fTask );
@@ -956,7 +956,7 @@ ATASMARTUserClient::ReadDataThresholds ( vm_address_t data )
 		
 	}
 	
-	buffer = IOMemoryDescriptor::withAddress ( 	data,
+	buffer = IOMemoryDescriptor::withAddressRange ( 	data,
 												sizeof ( ATASMARTDataThresholds ),
 												kIODirectionIn,
 												fTask );
@@ -1081,7 +1081,7 @@ ATASMARTUserClient::ReadLogAtAddress ( 	ATASMARTReadLogStruct *	readLogData,
 		
 	}
 	
-	buffer = IOMemoryDescriptor::withAddress ( 	( vm_address_t ) readLogData->buffer,
+	buffer = IOMemoryDescriptor::withAddressRange ( 	( vm_address_t ) readLogData->buffer,
 												readLogData->bufferSize,
 												kIODirectionIn,
 												fTask );
@@ -1208,7 +1208,7 @@ ATASMARTUserClient::WriteLogAtAddress ( ATASMARTWriteLogStruct *	writeLogData,
 		
 	}
 	
-	buffer = IOMemoryDescriptor::withAddress ( 	( vm_address_t ) writeLogData->buffer,
+	buffer = IOMemoryDescriptor::withAddressRange ( 	( vm_address_t ) writeLogData->buffer,
 												writeLogData->bufferSize,
 												kIODirectionOut,
 												fTask );
@@ -1364,7 +1364,7 @@ ATASMARTUserClient::GetIdentifyData ( ATAGetIdentifyDataStruct *	identifyData,
 		
 	}
 
-	userBuffer = IOMemoryDescriptor::withAddress ( ( vm_address_t ) identifyData->buffer,
+	userBuffer = IOMemoryDescriptor::withAddressRange ( ( vm_address_t ) identifyData->buffer,
 												   identifyData->bufferSize,
 												   kIODirectionIn,
 												   fTask );

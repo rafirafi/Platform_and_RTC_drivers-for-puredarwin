@@ -38,6 +38,7 @@
 #include "IOATABlockStorageDriver.h"
 #define	super IOService
 
+//#define ATA_BLOCK_STORAGE_DRIVER_DEBUGGING_LEVEL 3
 
 #if ( ATA_BLOCK_STORAGE_DRIVER_DEBUGGING_LEVEL >= 1 )
 #define PANIC_NOW(x)			IOPanic x
@@ -172,7 +173,7 @@ IOATABlockStorageDriver::powerDownHandler (	void * 			refCon,
 //										initial state the device should be in.
 //---------------------------------------------------------------------------
 
-UInt32
+unsigned long
 IOATABlockStorageDriver::initialPowerStateForDomainState (
 											IOPMPowerFlags	flags )
 {

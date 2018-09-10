@@ -430,7 +430,7 @@ IOATABlockStorageDevice::setProperties ( OSObject * properties )
 
 //---------------------------------------------------------------------------
 // 
-
+#ifndef __LP64__
 IOReturn
 IOATABlockStorageDevice::doAsyncReadWrite (
 											IOMemoryDescriptor *	buffer,
@@ -449,8 +449,23 @@ IOATABlockStorageDevice::doAsyncReadWrite (
 	return fProvider->doAsyncReadWrite ( buffer, block, nblks, completion );
 	
 }
-
-
+#else
+IOReturn	IOATABlockStorageDevice::doAsyncReadWrite (IOMemoryDescriptor *	  buffer,
+									  UInt64					block,
+									  UInt64					nblks,
+									  IOStorageAttributes *		attributes,
+									  IOStorageCompletion *		completion )
+{
+	// Block incoming I/O if we have been terminated
+	if ( isInactive ( ) != false )
+	{
+		return kIOReturnNotAttached;
+	}
+	
+	fProvider->checkPowerState ( );
+	return fProvider->doAsyncReadWrite ( buffer, block, nblks, attributes, completion );
+}
+#endif
 //---------------------------------------------------------------------------
 //
 

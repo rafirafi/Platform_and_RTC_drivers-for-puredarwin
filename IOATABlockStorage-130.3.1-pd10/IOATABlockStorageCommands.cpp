@@ -1374,10 +1374,15 @@ IOATABlockStorageDriver::sHandleCommandCompletion ( IOATACommand * cmd )
 		clientData.self->returnATACommandObject ( cmd );
 		
 		// Signal the completion routine that the request has been completed.
+#ifndef __LP64__
 		IOStorage::complete ( clientData.completion.async,
 							  result,
 							  bytesTransferred );
-		
+#else		
+		IOStorage::complete ( &(clientData.completion.async),
+							 result,
+							 bytesTransferred );
+#endif
 	}
 	
 	STATUS_LOG ( ( "IOATABlockStorageDriver::sHandleCommandCompletion exiting.\n" ) );

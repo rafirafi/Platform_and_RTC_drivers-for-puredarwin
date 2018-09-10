@@ -474,15 +474,22 @@ ATASMARTClient::SMARTEnableDisableOperations ( Boolean enable )
 {
 	
 	IOReturn	status 		= kIOReturnSuccess;
-	int			selection 	= ( enable == true ) ? 1 : 0;
+	uint64_t			selection 	= ( enable == true ) ? 1 : 0;
 
 	PRINT ( ( "ATASMARTClient::SMARTEnableDisableOperations called\n" ) );
 	
-	status = IOConnectMethodScalarIScalarO ( fConnection,
+	/*status = IOConnectMethodScalarIScalarO ( fConnection,
 											 kIOATASMARTEnableDisableOperations,
 											 1,
 											 0,
-											 &selection );
+											 &selection );*/
+	
+	status = IOConnectCallScalarMethod( fConnection,
+											kIOATASMARTEnableDisableOperations,
+											&selection,
+											1,
+											NULL,
+											0);
 
 	PRINT ( ( "ATASMARTClient::SMARTEnableDisableOperations status = %d\n", status ) );		
 
@@ -501,15 +508,22 @@ ATASMARTClient::SMARTEnableDisableAutosave ( Boolean enable )
 {
 	
 	IOReturn	status 		= kIOReturnSuccess;
-	int			selection 	= ( enable == true ) ? 1 : 0;
+	uint64_t	selection 	= ( enable == true ) ? 1 : 0;
 	
 	PRINT ( ( "ATASMARTClient::SMARTEnableDisableAutosave called\n" ) );
 	
-	status = IOConnectMethodScalarIScalarO ( fConnection,
+	/*status = IOConnectMethodScalarIScalarO ( fConnection,
 											 kIOATASMARTEnableDisableAutoSave,
 											 1,
 											 0,
-											 &selection );
+											 &selection );*/
+	
+	status = IOConnectCallScalarMethod ( fConnection,
+											kIOATASMARTEnableDisableAutoSave,
+											&selection,
+											1,
+											NULL,
+										    0);
 	
 	PRINT ( ( "ATASMARTClient::SMARTEnableDisableAutosave status = %d\n", status ) );		
 	
@@ -528,15 +542,25 @@ ATASMARTClient::SMARTReturnStatus ( Boolean * exceededCondition )
 {
 	
 	IOReturn	status 		= kIOReturnSuccess;
-	int			condition 	= 0;
+	uint64_t	condition 	= 0;
 	
 	PRINT ( ( "ATASMARTClient::SMARTReturnStatus called\n" ) );
 	
-	status = IOConnectMethodScalarIScalarO ( fConnection,
+	/*status = IOConnectMethodScalarIScalarO ( fConnection,
 											 kIOATASMARTReturnStatus,
 											 0,
 											 1,
-											 &condition );
+											 &condition );*/
+	
+	
+	uint32_t outputCnt = 1;
+	status = IOConnectCallScalarMethod ( fConnection,
+											kIOATASMARTReturnStatus,
+											NULL,
+											0,
+											&condition,
+											&outputCnt );
+
 	
 	if ( status == kIOReturnSuccess )
 	{
@@ -563,15 +587,22 @@ ATASMARTClient::SMARTExecuteOffLineImmediate ( Boolean extendedTest )
 {
 	
 	IOReturn	status 		= kIOReturnSuccess;
-	int			selection 	= ( extendedTest == true ) ? 1 : 0;;
+	uint64_t			selection 	= ( extendedTest == true ) ? 1 : 0;;
 	
 	PRINT ( ( "ATASMARTClient::SMARTExecuteOffLineImmediate called\n" ) );
 	
-	status = IOConnectMethodScalarIScalarO ( fConnection,
+	/*status = IOConnectMethodScalarIScalarO ( fConnection,
 											 kIOATASMARTExecuteOffLineImmediate,
 											 1,
 											 0,
-											 &selection );
+											 &selection );*/
+	
+	status = IOConnectCallScalarMethod ( fConnection,
+											kIOATASMARTExecuteOffLineImmediate,
+											&selection,
+											1,
+											NULL,
+											0 );
 	
 	PRINT ( ( "ATASMARTClient::SMARTExecuteOffLineImmediate status = %d\n", status ) );		
 	
@@ -593,11 +624,18 @@ ATASMARTClient::SMARTReadData ( ATASMARTData * data )
 	
 	PRINT ( ( "ATASMARTClient::SMARTReadData called\n" ) );
 	
-	status = IOConnectMethodScalarIScalarO (	fConnection, 	
+	/*status = IOConnectMethodScalarIScalarO (	fConnection, 	
 												kIOATASMARTReadData, 
 												1,
 												0,
-												( int * ) data );
+												( int * ) data );*/
+	
+	status = IOConnectCallScalarMethod (	fConnection, 	
+											kIOATASMARTReadData,
+											( uint64_t * ) data,
+											1,
+											NULL,
+											0 );	
 	
 	PRINT ( ( "ATASMARTClient::SMARTReadData status = %d\n", status ) );		
 	
@@ -639,11 +677,18 @@ ATASMARTClient::SMARTReadDataThresholds ( ATASMARTDataThresholds * data )
 	
 	PRINT ( ( "ATASMARTClient::SMARTReadDataThresholds called\n" ) );
 	
-	status = IOConnectMethodScalarIScalarO (	fConnection, 	
+	/*status = IOConnectMethodScalarIScalarO (	fConnection, 	
 												kIOATASMARTReadDataThresholds, 
 												1,
 												0,
-												( int * ) data );
+												( int * ) data );*/
+	
+	status = IOConnectCallScalarMethod ( fConnection, 	
+											kIOATASMARTReadDataThresholds,
+											( uint64_t * ) data,
+											1,
+											NULL,
+											0 );
 	
 	PRINT ( ( "ATASMARTClient::SMARTReadDataThresholds status = %d\n", status ) );		
 	
@@ -726,7 +771,7 @@ ATASMARTClient::SMARTReadLogAtAddress ( UInt32		address,
 {
 	
 	IOReturn				status;
-	IOByteCount				byteCount;
+	size_t				byteCount;
 	ATASMARTReadLogStruct	params;
 	
 	PRINT ( ( "ATASMARTClient::SMARTReadLogAtAddress called\n" ) );
@@ -757,11 +802,22 @@ ATASMARTClient::SMARTReadLogAtAddress ( UInt32		address,
 	
 	PRINT ( ( "ATASMARTClient::SMARTReadLogAtAddress address = %ld\n", address ) );		
 	
-	status = IOConnectMethodScalarIStructureI (  fConnection, 	
+	/*status = IOConnectMethodScalarIStructureI (  fConnection, 	
 												 kIOATASMARTReadLogAtAddress, 
 												 0,
 												 byteCount,
-												 ( void * ) &params );
+												 ( void * ) &params );*/
+	
+	status = IOConnectCallMethod(fConnection, 
+								 kIOATASMARTReadLogAtAddress, 
+								 NULL, 
+								 0, 
+								 ( void * ) &params , 
+								 byteCount, 
+								 NULL, 
+								 NULL, 
+								 NULL, 
+								 NULL);
 	
 	
 Exit:
@@ -786,7 +842,7 @@ ATASMARTClient::SMARTWriteLogAtAddress ( UInt32			address,
 {
 	
 	IOReturn				status;
-	IOByteCount				byteCount;
+	size_t				byteCount;
 	ATASMARTWriteLogStruct	params;
 	
 	PRINT ( ( "ATASMARTClient::SMARTWriteLogAtAddress called\n" ) );
@@ -817,12 +873,22 @@ ATASMARTClient::SMARTWriteLogAtAddress ( UInt32			address,
 	
 	PRINT ( ( "ATASMARTClient::SMARTWriteLogAtAddress address = %ld\n", address ) );		
 	
-	status = IOConnectMethodScalarIStructureI (  fConnection, 	
+	/*status = IOConnectMethodScalarIStructureI (  fConnection, 	
 												 kIOATASMARTWriteLogAtAddress, 
 												 0,
 												 byteCount,
-												 ( void * ) &params );
+												 ( void * ) &params );*/
 	
+	status = IOConnectCallMethod(fConnection, 
+								 kIOATASMARTWriteLogAtAddress, 
+								 NULL, 
+								 0, 
+								 ( void * ) &params , 
+								 byteCount, 
+								 NULL, 
+								 NULL, 
+								 NULL, 
+								 NULL);	
 	
 Exit:
 	
@@ -849,8 +915,8 @@ IOReturn
 ATASMARTClient::GetATAIdentifyData ( void * buffer, UInt32 inSize, UInt32 * outSize )
 {
 	
-	IOReturn					status				= kIOReturnBadArgument;
-	IOByteCount					byteCount			= 0;
+	IOReturn				 	status				= kIOReturnBadArgument;
+	size_t					    byteCount			= 0;
 	ATAGetIdentifyDataStruct	params				= { 0 };
 	UInt32						bytesTransferred 	= 0;
 	
@@ -869,12 +935,19 @@ ATASMARTClient::GetATAIdentifyData ( void * buffer, UInt32 inSize, UInt32 * outS
 	
 	PRINT ( ( "ATASMARTClient::GetATAIdentifyData\n" ) );		
 	
-	status = IOConnectMethodStructureIStructureO ( fConnection,
+	/*status = IOConnectMethodStructureIStructureO ( fConnection,
 												   kIOATASMARTGetIdentifyData,
 												   sizeof ( ATAGetIdentifyDataStruct ),
 												   &byteCount,
 												   ( void * ) &params,
-												   ( void * ) &bytesTransferred );
+												   ( void * ) &bytesTransferred );*/
+	
+	status = IOConnectCallStructMethod(fConnection, 
+									   kIOATASMARTGetIdentifyData, 
+									   ( void * ) &params,  
+									   sizeof ( ATAGetIdentifyDataStruct ), 
+									   ( void * ) &bytesTransferred, 
+									   &byteCount);
 	
 	if ( outSize != NULL )
 	{
