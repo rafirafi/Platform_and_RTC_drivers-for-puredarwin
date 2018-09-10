@@ -5,17 +5,17 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>AppleAPIC</string>
+	<string>Apple8259PIC</string>
 	<key>CFBundleGetInfoString</key>
 	<string>1.4, Copyright Apple Computer, Inc. 2003-2008</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>com.apple.driver.AppleAPIC</string>
+	<string>com.apple.driver.Apple8259PIC</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>I/O APIC Interrupt Controller Driver</string>
+	<string>8259 PIC Interrupt Controller Driver</string>
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
@@ -26,14 +26,14 @@
 	<string>1.4</string>
 	<key>IOKitPersonalities</key>
 	<dict>
-		<key>io-apic</key>
+		<key>8259-pic</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
-			<string>com.apple.driver.AppleAPIC</string>
+			<string>com.apple.driver.Apple8259PIC</string>
 			<key>IOClass</key>
-			<string>AppleAPICInterruptController</string>
+			<string>Apple8259PICInterruptController</string>
 			<key>IONameMatch</key>
-			<string>io-apic</string>
+			<string>8259-pic</string>
 			<key>IOProviderClass</key>
 			<string>IOPlatformDevice</string>
 		</dict>

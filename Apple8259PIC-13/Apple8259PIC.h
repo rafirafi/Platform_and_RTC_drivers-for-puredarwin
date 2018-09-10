@@ -28,6 +28,10 @@
 #include <libkern/c++/OSContainers.h>
 #include <architecture/i386/pio.h>
 
+#if OSTYPES_K64_REV < 1
+typedef long IOInterruptVectorNumber;
+#endif
+
 #define kClockIRQ              0
 
 #define kPIC1BasePort          0x20
@@ -144,7 +148,7 @@ protected:
 
     virtual void     resumeFromSleep( void );
 
-    virtual IOReturn setVectorType( long vectorNumber, long type );
+    virtual IOReturn setVectorType( IOInterruptVectorNumber vectorNumber, long type );
 
     virtual void     free( void );
 
@@ -155,7 +159,7 @@ public:
                                        int   source,
                                        int * interruptType );
 
-    virtual int      getVectorType( long vectorNumber,
+    virtual int      getVectorType( IOInterruptVectorNumber vectorNumber,
                                     IOInterruptVector * vector);
 
     virtual IOInterruptAction getInterruptHandlerAddress( void );
@@ -164,16 +168,16 @@ public:
                                       IOService * nub,
                                       int source );
 
-    virtual bool     vectorCanBeShared( long vectorNumber,
+    virtual bool     vectorCanBeShared( IOInterruptVectorNumber vectorNumber,
                                         IOInterruptVector * vector );
 
-    virtual void     initVector( long vectorNumber,
+    virtual void     initVector( IOInterruptVectorNumber vectorNumber,
                                  IOInterruptVector * vector );
 
-    virtual void     disableVectorHard( long vectorNumber,
+    virtual void     disableVectorHard( IOInterruptVectorNumber vectorNumber,
                                         IOInterruptVector * vector );
 
-    virtual void     enableVector( long vectorNumber,
+    virtual void     enableVector( IOInterruptVectorNumber vectorNumber,
                                    IOInterruptVector * vector );
 
     virtual IOReturn callPlatformFunction( const OSSymbol * function,

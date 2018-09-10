@@ -2,13 +2,13 @@
  * Copyright (c) 2003 Apple Computer, Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
- * 
+ *
  * The contents of this file constitute Original Code as defined in and
  * are subject to the Apple Public Source License Version 1.1 (the
  * "License").  You may not use this file except in compliance with the
  * License.  Please obtain a copy of the License at
  * http://www.apple.com/publicsource and read it before using this file.
- * 
+ *
  * This Original Code and all software distributed under the License are
  * distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY KIND, EITHER
  * EXPRESS OR IMPLIED, AND APPLE HEREBY DISCLAIMS ALL SUCH WARRANTIES,
@@ -16,7 +16,7 @@
  * FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT.  Please see the
  * License for the specific language governing rights and limitations
  * under the License.
- * 
+ *
  * @APPLE_LICENSE_HEADER_END@
  */
 
@@ -24,6 +24,14 @@
 #include <IOKit/IOPlatformExpert.h>
 #include "Apple8259PIC.h"
 #include "PICShared.h"
+
+/*
+ * This must agree with the trap number reported by the low-level
+ * interrupt handler (osfmk/i386/locore.s).
+ */
+enum {
+    kBaseIOInterruptVectors = 0x40
+};
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
@@ -38,7 +46,7 @@ bool Apple8259PIC::start( IOService * provider )
 {
     IOInterruptAction handler;
     const OSSymbol *  name;
-
+	
     if ( super::start(provider) == false ) return false;
 
     _handleSleepWakeFunction = OSSymbol::withCString(
@@ -87,7 +95,7 @@ bool Apple8259PIC::start( IOService * provider )
     outb( kPIC_OCW2(kPIC1BasePort), kPIC_OCW2_R   |
                                     kPIC_OCW2_SL  |
                                     kPIC_OCW2_LEVEL(2) );
-    
+
     // Initialize slave PIC
 
     initializePIC( kPIC2BasePort,
@@ -118,7 +126,7 @@ bool Apple8259PIC::start( IOService * provider )
 
     handler = getInterruptHandlerAddress();
     if ( provider->registerInterrupt(0, this, handler, 0) != kIOReturnSuccess )
-        IOPanic("8259-PIC: registerInterrupt failed");
+        panic("8259-PIC: registerInterrupt failed");
 
     provider->enableInterrupt(0);
 
@@ -135,6 +143,8 @@ bool Apple8259PIC::start( IOService * provider )
 
     getPlatform()->registerInterruptController( (OSSymbol *) name, this );
     name->release();
+	
+	//IOLog("%s::%s\n", getName(), __func__);
 
     return true;
 }
@@ -202,7 +212,7 @@ void Apple8259PIC::initializePIC( UInt16 port,
 //---------------------------------------------------------------------------
 // Report whether the interrupt line is edge or level triggered.
 
-int Apple8259PIC::getVectorType( long vectorNumber,
+int Apple8259PIC::getVectorType( IOInterruptVectorNumber vectorNumber,
                                  IOInterruptVector * vector )
 {
     if (_interruptTriggerTypes & (1 << vectorNumber))
@@ -217,7 +227,7 @@ IOReturn Apple8259PIC::getInterruptType( IOService * nub,
 {
     IOInterruptSource * interruptSources;
     OSData            * vectorData;
-  
+
     if (!nub || !interruptType)
     {
         return kIOReturnBadArgument;
@@ -260,7 +270,7 @@ IOReturn Apple8259PIC::getInterruptType( IOService * nub,
 
 //---------------------------------------------------------------------------
 
-IOReturn Apple8259PIC::setVectorType( long vectorNumber, long vectorType )
+IOReturn Apple8259PIC::setVectorType( IOInterruptVectorNumber vectorNumber, long vectorType )
 {
     IOInterruptState state;
 
@@ -276,7 +286,7 @@ IOReturn Apple8259PIC::setVectorType( long vectorNumber, long vectorType )
     if ( vectorType == kIOInterruptTypeLevel )
         _interruptTriggerTypes |= ( 1 << vectorNumber );
     else
-        _interruptTriggerTypes &= ~( 1 << vectorNumber );        
+        _interruptTriggerTypes &= ~( 1 << vectorNumber );
 
     outb( kPIC1TriggerTypePort, (UInt8) _interruptTriggerTypes );
     outb( kPIC2TriggerTypePort, (UInt8)(_interruptTriggerTypes >> 8));
@@ -290,7 +300,7 @@ IOReturn Apple8259PIC::setVectorType( long vectorNumber, long vectorType )
 
 IOInterruptAction Apple8259PIC::getInterruptHandlerAddress( void )
 {
-    return (IOInterruptAction) &Apple8259PIC::handleInterrupt;
+    return OSMemberFunctionCast(IOInterruptAction, this, &Apple8259PIC::handleInterrupt);
 }
 
 //---------------------------------------------------------------------------
@@ -302,7 +312,7 @@ IOReturn Apple8259PIC::handleInterrupt( void *      savedState,
                                         int         source )
 {
     IOInterruptVector * vector;
-    long                vectorNumber;
+    IOInterruptVectorNumber                vectorNumber;
     long                level;
     void *              refCon;
 
@@ -345,13 +355,13 @@ IOReturn Apple8259PIC::handleInterrupt( void *      savedState,
     if (level) ackInterrupt( vectorNumber );
 
     vector->interruptActive = 0;
-        
+
     return kIOReturnSuccess;
 }
 
 //---------------------------------------------------------------------------
 
-bool Apple8259PIC::vectorCanBeShared( long vectorNumber,
+bool Apple8259PIC::vectorCanBeShared( IOInterruptVectorNumber vectorNumber,
                                       IOInterruptVector * vector )
 {
     if (getVectorType(vectorNumber, vector) == kIOInterruptTypeLevel)
@@ -362,7 +372,7 @@ bool Apple8259PIC::vectorCanBeShared( long vectorNumber,
 
 //---------------------------------------------------------------------------
 
-void Apple8259PIC::initVector( long vectorNumber,
+void Apple8259PIC::initVector( IOInterruptVectorNumber vectorNumber,
                                IOInterruptVector * vector )
 {
     IOInterruptSource * interruptSources;
@@ -390,7 +400,7 @@ void Apple8259PIC::initVector( long vectorNumber,
 
 //---------------------------------------------------------------------------
 
-void Apple8259PIC::disableVectorHard( long vectorNumber,
+void Apple8259PIC::disableVectorHard( IOInterruptVectorNumber vectorNumber,
                                       IOInterruptVector * vector )
 {
     IOInterruptState state;
@@ -405,7 +415,7 @@ void Apple8259PIC::disableVectorHard( long vectorNumber,
 
 //---------------------------------------------------------------------------
 
-void Apple8259PIC::enableVector( long vectorNumber,
+void Apple8259PIC::enableVector( IOInterruptVectorNumber vectorNumber,
                                  IOInterruptVector * vector )
 {
     IOInterruptState state;
@@ -463,7 +473,7 @@ void Apple8259PIC::resumeFromSleep( void )
     outb( kPIC_OCW2(kPIC1BasePort), kPIC_OCW2_R   |
                                     kPIC_OCW2_SL  |
                                     kPIC_OCW2_LEVEL(2) );
-    
+
     // Initialize slave PIC.
 
     initializePIC( kPIC2BasePort,
